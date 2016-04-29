@@ -1,0 +1,35 @@
+version: 0.0
+os: linux
+files:
+   - source: /
+     destination: /var/www/html
+permissions:
+   - object: /var/www/html
+     pattern: "**"
+     owner: apache
+     group: apache
+     mode: 755
+     type:
+       - file
+hooks:
+   BeforeInstall:
+    - location: Scripts/installsql.sh
+      runas: root
+    - location: Scripts/startsql.sh
+      runas: root
+    - location: Scripts/installapache.sh
+      runas: root
+    - location: Scripts/startapache.sh
+      runas: root
+    - location: Scripts/installphp.sh
+      runas: root
+    - location: Scripts/installphppec.sh
+      runas: root
+    - location: Scripts/installphpadmin.sh
+      runas: root
+    - location: Scripts/restartapache.sh
+      runas: root
+
+   AfterInstall:
+    - location: Scripts/restartapache.sh
+      runas: root
