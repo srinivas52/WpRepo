@@ -1,3 +1,3 @@
 #!/bin/bash
-yum -y install php-pecl-apc  > /var/log/installphppec.out 2>&1
+yum -y install php-pecl-apc > /var/log/installphppec.out 2>&1
 
